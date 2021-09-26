@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, Dispatch } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 import { CalendarComponent, ChangedEventArgs } from '@syncfusion/ej2-react-calendars'; 
 
 import Entry from '../components/Entry';
-const Tab1: React.FC = () => {
+type CalProps = {
+  setSelDate: Dispatch<React.SetStateAction<string>>;
+  
+};
+const Tab1: React.FC<CalProps> = ({setSelDate}) => {
   const [isShow, setIsShow] = useState<boolean>(false);
 
 const display = () =>{
@@ -13,6 +17,8 @@ const display = () =>{
 }
 function onchange( args: ChangedEventArgs): void { 
   /*Displays selected date in the label*/ 
+  var tmp = args!.value!.toLocaleDateString();
+  setSelDate(tmp);
   (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args!.value!.toLocaleDateString(); 
 } 
   return (

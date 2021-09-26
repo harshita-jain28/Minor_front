@@ -1,3 +1,9 @@
 .write{
     opacity: 0.6;
 }
+.date{
+    padding:20% 0 20% 5%;
+}
+.heading{
+    font-size: 25px;
+}

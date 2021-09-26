@@ -37,6 +37,7 @@ import NewEntry from './pages/NewEntry';
 
 const App: React.FC = () => {
   const [isEntry, setEntry] = useState<boolean>(false)
+  const [seldate,setSelDate] = useState(new Date().toLocaleDateString() + "");
   const [entries, setEntries] = useState([
     {
       "id": 0,
@@ -44,22 +45,24 @@ const App: React.FC = () => {
       "title": "",
       "story": "",
     }])
+  const [title,setTitle] = useState("");
+  const [diary,setDiary] = useState("");
   return (
     <IonApp>
       <IonReactRouter>
         {isEntry ? (
           <IonRouterOutlet>
             <Route path="/" exact>
-              <NewEntry setEntry={setEntry} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary}/>
             </Route>
             <Route path="/tab1" exact>
-              <NewEntry setEntry={setEntry} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary}/>
             </Route>
             <Route path="/tab3" exact>
-              <NewEntry setEntry={setEntry} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} />
             </Route>
             <Route path="/tab2" exact>
-              <NewEntry setEntry={setEntry} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} />
             </Route>
           </IonRouterOutlet>
 
@@ -67,7 +70,7 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet>
               <Route exact path="/tab1">
-                <Tab1 />
+                <Tab1 setSelDate={setSelDate}/>
               </Route>
               <Route exact path="/tab2">
                 <Tab2 setEntry={setEntry} />
