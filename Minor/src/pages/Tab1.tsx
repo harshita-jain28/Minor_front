@@ -15,18 +15,18 @@ const display = () =>{
   setIsShow(!isShow)
   console.log("hi")
 }
-function onchange( args: ChangedEventArgs): void { 
-  /*Displays selected date in the label*/ 
-  var tmp = args!.value!.toLocaleDateString();
-  setSelDate(tmp);
-  (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args!.value!.toLocaleDateString(); 
-} 
+// function onchange( args: ChangedEventArgs): void { 
+//   var tmp = args!.value!.toLocaleDateString();
+//   setSelDate(tmp);
+//   (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args!.value!.toLocaleDateString(); 
+// } 
   return (
     <IonPage>
       <IonContent >
         <div>
-       <CalendarComponent className="cal" dayHeaderFormat="Short" change={onchange}></CalendarComponent>
-       <label id='date_label'>Selected Value: </label> 
+       <CalendarComponent className="cal" dayHeaderFormat="Short"></CalendarComponent>
+       {/* <label id='date_label'>Selected Value: </label>  */}
+       <IonTitle className="ion-padding">Recent Entries</IonTitle>
        {isShow &&
         <Entry setisShow={setIsShow}/>
         }

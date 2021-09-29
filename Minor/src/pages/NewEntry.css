@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 .write{
     opacity: 0.6;
+    margin-bottom:4%;
+}
+.inp{
+    opacity: 0.7;
 }
 .date{
     padding:20% 0 20% 5%;
+    font-family: 'Varela Round', sans-serif;
+    opacity:0.6;
+}
+.txt{
+    padding:20% 0 20% 5%;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 150%;
+    margin-top: 30%;
 }
 .heading{
     font-size: 25px;
+}
+.entry{
+    padding-left: 3%;
+    opacity: 0.7;
+
 }

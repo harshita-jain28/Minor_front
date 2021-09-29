@@ -24,9 +24,9 @@ const NewEntry: React.FC<EntryProps> = ({ setEntry, selDate, setTitle, title, se
                 <IonTitle className="ion-padding ion-text-center write">Write</IonTitle>
                 <IonText className="ion-padding date">Date: {selDate} </IonText>
                 <form className="ion-padding">
-                    <IonText className="ion-padding date">Title</IonText>
+                    <IonText className="ion-padding txt">Title</IonText>
                     <IonInput
-                    className="ion-padding"
+                    className="ion-padding inp"
                         placeholder="Add a title to the entry"
                         name="title"
                         type="text"
@@ -35,13 +35,13 @@ const NewEntry: React.FC<EntryProps> = ({ setEntry, selDate, setTitle, title, se
                         onIonChange={(e) => setTitle(e.detail.value!)}
                         required
                     ></IonInput>
-                        <IonText className="ion-padding date">Entry</IonText>
-                        <IonTextarea autoGrow={true} placeholder="Write entry"  onIonChange={e => setDiary(e.detail.value!)}></IonTextarea>
+                        <IonText className="ion-padding txt">Entry</IonText>
+                        <IonTextarea className="entry" autoGrow={true} placeholder="Write entry"  onIonChange={e => setDiary(e.detail.value!)}></IonTextarea>
                 </form>
 
             </IonContent>
-            <IonFooter>
-                <IonButton onClick={() => newentry()}>Create</IonButton>
+            <IonFooter className="footer ion-no-border" >
+                <IonButton shape="round" onClick={() => newentry()}>Create</IonButton>
             </IonFooter>
         </IonPage>
 
