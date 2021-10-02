@@ -1,9 +1,15 @@
 import { useState, Dispatch } from 'react';
-import { IonButton, IonContent, IonTextarea, IonInput, IonItem, IonHeader, IonLabel, IonPage, IonText, IonTitle, IonToolbar, IonFooter } from '@ionic/react';
+import {
+    IonButton,
+    IonContent,
+    IonTextarea,
+    IonInput,
+    IonPage,
+    IonText,
+    IonTitle,
+    IonFooter,
+} from '@ionic/react';
 import './NewEntry.css';
-import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
-import Entry from '../components/Entry';
-import { backspace } from 'ionicons/icons';
 type EntryProps = {
     setEntry: Dispatch<React.SetStateAction<boolean>>;
     selDate: string;
@@ -11,11 +17,31 @@ type EntryProps = {
     title: string;
     setDiary: Dispatch<React.SetStateAction<string>>
     setTitle: Dispatch<React.SetStateAction<string>>
-
-
+    setEntries: Dispatch<React.SetStateAction<{}[]>>
+    setStyle: Dispatch<React.SetStateAction<{ backgroundImage: string }>>
+    imgUrl: string;
+    setUrl: Dispatch<React.SetStateAction<string>>;
+    divstyle: {}
 };
-const NewEntry: React.FC<EntryProps> = ({ setEntry, selDate, setTitle, title, setDiary, diary }) => {
+const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries }) => {
+    var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
+    const cancelentry = () => {
+        setEntry(false)
+
+    }
     const newentry = () => {
+        var rand = items[Math.floor(Math.random() * items.length)]
+        setUrl(rand);
+        setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
+        setEntries(prevItems => [
+            ...prevItems,
+            {
+                "id": 1,
+                "date": selDate,
+                "title": title,
+                "story": diary,
+                "background": divstyle,
+            }])
         setEntry(false)
     }
     return (
@@ -26,7 +52,7 @@ const NewEntry: React.FC<EntryProps> = ({ setEntry, selDate, setTitle, title, se
                 <form className="ion-padding">
                     <IonText className="ion-padding txt">Title</IonText>
                     <IonInput
-                    className="ion-padding inp"
+                        className="ion-padding inp"
                         placeholder="Add a title to the entry"
                         name="title"
                         type="text"
@@ -35,13 +61,15 @@ const NewEntry: React.FC<EntryProps> = ({ setEntry, selDate, setTitle, title, se
                         onIonChange={(e) => setTitle(e.detail.value!)}
                         required
                     ></IonInput>
-                        <IonText className="ion-padding txt">Entry</IonText>
-                        <IonTextarea className="entry" autoGrow={true} placeholder="Write entry"  onIonChange={e => setDiary(e.detail.value!)}></IonTextarea>
+                    <IonText className="ion-padding txt">Entry</IonText>
+                    <IonTextarea className="entry" autoGrow={true} placeholder="Write entry" onIonChange={e => setDiary(e.detail.value!)} required></IonTextarea>
                 </form>
 
             </IonContent>
             <IonFooter className="footer ion-no-border" >
-                <IonButton shape="round" onClick={() => newentry()}>Create</IonButton>
+                <IonButton shape="round" type="submit" onClick={() => cancelentry()} >Cancel</IonButton>
+
+                <IonButton shape="round" type="submit" onClick={() => newentry()} >Create</IonButton>
             </IonFooter>
         </IonPage>
 

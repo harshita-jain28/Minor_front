@@ -5,16 +5,18 @@
 }
 .inp{
     opacity: 0.7;
+    padding:0% !important;
+    margin:0;
 }
 .date{
-    padding:20% 0 20% 5%;
+    padding:20% 0% 0% 5%;
     font-family: 'Varela Round', sans-serif;
     opacity:0.6;
 }
 .txt{
-    padding:20% 0 20% 5%;
+    padding:20% 0 0% 5%;
     font-family: 'Varela Round', sans-serif;
-    font-size: 150%;
+    font-size: 140%;
     margin-top: 30%;
 }
 .heading{
@@ -24,4 +26,7 @@
     padding-left: 3%;
     opacity: 0.7;
 
+}
+.footer{
+    padding:2%;
 }
