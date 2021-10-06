@@ -37,6 +37,8 @@ const App: React.FC = () => {
   const [divstyle, setStyle] = useState({});
   const [iswrite, setWrite] = useState(true);
   const [imgUrl, setUrl] = useState("https://i.postimg.cc/QCSnN01r/bg2.png");
+  const [disImg,setImg] = useState(true);
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -44,20 +46,20 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route path="/" exact>
               {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} />
+                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
               ) :
                 <DisplayEntry />
               }
             </Route>
             <Route path="/tab1" exact>
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
             </Route>
             <Route path="/tab3" exact>
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} />
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
             </Route>
             <Route path="/tab2" exact>
               {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} />
+                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
               ) :
                 <DisplayEntry />
               }
@@ -72,7 +74,7 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/tab2">
 
-                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} />
+                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg}/>
 
               </Route>
               <Route path="/tab3">

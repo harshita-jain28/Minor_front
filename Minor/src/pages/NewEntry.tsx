@@ -21,9 +21,11 @@ type EntryProps = {
     setStyle: Dispatch<React.SetStateAction<{ backgroundImage: string }>>
     imgUrl: string;
     setUrl: Dispatch<React.SetStateAction<string>>;
-    divstyle: {}
+    divstyle: {},
+    setImg: Dispatch<React.SetStateAction<boolean>>;
+
 };
-const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries }) => {
+const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries, setImg }) => {
     var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
     const cancelentry = () => {
         setEntry(false)
@@ -42,13 +44,14 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
                 "story": diary,
                 "background": divstyle,
             }])
+        setImg(false);
         setEntry(false)
     }
     return (
         <IonPage>
             <IonContent >
                 <IonTitle className="ion-padding ion-text-center write">Write</IonTitle>
-                <IonText className="ion-padding date">Date: {selDate} </IonText>
+                <IonText className="ion-padding date" color="secondary">Date: {selDate} </IonText>
                 <form className="ion-padding">
                     <IonText className="ion-padding txt">Title</IonText>
                     <IonInput
@@ -67,9 +70,9 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
 
             </IonContent>
             <IonFooter className="footer ion-no-border" >
-                <IonButton shape="round" type="submit" onClick={() => cancelentry()} >Cancel</IonButton>
+                <IonButton shape="round" type="submit" className="foot-btn" onClick={() => cancelentry()} >Cancel</IonButton>
 
-                <IonButton shape="round" type="submit" onClick={() => newentry()} >Create</IonButton>
+                <IonButton shape="round" type="submit" color="secondary"  onClick={() => newentry()} >Create</IonButton>
             </IonFooter>
         </IonPage>
 

@@ -1,6 +1,9 @@
 import React from "react"
+// @ts-ignore
+import DonutChart from 'react-donut-chart'
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { Group } from '@visx/group';
+import "./Graph.css"
 import {
   Glyph as CustomGlyph,
   GlyphCircle,
@@ -79,52 +82,35 @@ const Graph: React.FC<GlyphProps> = ({ width=100, height=100, margin = defaultMa
     return(
         <IonPage>
             <IonContent>
-            <svg width={width} height={height}>
-      <rect x={0} y={0} width={width} height={height} fill={secondaryColor} rx={14} />
-      <Group left={margin.left} top={margin.top}>
-        <LinePath
-          data={data}
-          x={getX}
-          y={getY}
-          stroke={primaryColor}
-          strokeWidth={2}
-          strokeDasharray="2,2"
-          curve={curveBasis}
-        />
-        <LinePath
-          data={data}
-          x={getX}
-          y={getY}
-          stroke={primaryColor}
-          strokeWidth={2}
-          curve={curveMonotoneX}
-        />
-        {data.map((d, i) => {
-          const CurrGlyph = Glyphs[i % Glyphs.length];
-          const left = getX(d);
-          const top = getY(d);
-          return (
-            <g key={`line-glyph-${i}`}>
-              <CurrGlyph
-                left={left}
-                top={top}
-                size={110}
-                stroke={secondaryColor}
-                strokeWidth={10}
-              />
-              <CurrGlyph
-                left={left}
-                top={top}
-                size={110}
-                fill={i % 2 === 0 ? primaryColor : contrastColor}
-                stroke={i % 2 === 0 ? contrastColor : primaryColor}
-                strokeWidth={2}
-              />
-            </g>
-          );
-        })}
-      </Group>
-    </svg>
+           <IonTitle>Dashboard</IonTitle>
+    <DonutChart width="400" height="300" className="donutchart"
+    colors={['#C9CC3F','#D2042D', '#0398DB','#FFBF00','#C41E3A','#3949A3' ]}
+    data={[{
+        label: 'Joy',
+        value: 35
+    },
+    {
+        label: 'Anger',
+        value: 1,
+    },
+    {
+      label: 'Fear',
+      value: 8,
+  },
+  {
+        label: 'Suprise',
+        value: 2,
+  },
+  {
+    label: 'Love',
+    value: 45,
+},
+{
+  label: 'Sadness',
+  value: 9,
+}
+
+    ]} />
             </IonContent>
         </IonPage>
     );

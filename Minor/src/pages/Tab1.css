@@ -1,5 +1,12 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 @import url("https://cdn.syncfusion.com/19.2.0.55/js/web/flat-lime-dark/ej.web.all.min.css?_gl=1*1hdx8sd*_ga*NzU3NDE5NjE0LjE2MzI2NDAwMjE.*_ga_WC4JKKPHH0*MTYzMjY0MjE5Ny4xLjEuMTYzMjY0MzM0Mi4w&_ga=2.222987934.488512667.1632640021-757419614.1632640021");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .cal{
     max-width:100%;
+}
+
+.recent{
+    font-family:'Noto Sans', sans-serif ;
+    font-size: 19px;
 }

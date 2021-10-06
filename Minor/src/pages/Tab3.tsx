@@ -6,7 +6,7 @@ const Tab3: React.FC = () => {
     <IonPage>
       
       <IonContent fullscreen>
-        {/* <Graph width={300} height={400}  ></Graph> */}
+        <Graph width={300} height={400}  ></Graph>
       </IonContent>
     </IonPage>
   );

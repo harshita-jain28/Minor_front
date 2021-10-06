@@ -25,7 +25,7 @@ const Tab1: React.FC<CalProps> = ({ setSelDate }) => {
         <div>
           <CalendarComponent className="cal" dayHeaderFormat="Short"></CalendarComponent>
           {/* <label id='date_label'>Selected Value: </label>  */}
-          <IonTitle className="ion-padding">Recent Entries</IonTitle>
+          <IonTitle className="ion-padding recent" color="secondary">Recent Entries</IonTitle>
           
         </div>
       </IonContent>

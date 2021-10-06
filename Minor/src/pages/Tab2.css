@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .addcard{
     box-shadow: none !important;
+    padding-right: 5%;
+    border-bottom: 1px solid rgb(15,96,107,0.5) ;
+    
+
+}
+
+.add-btn{
+    padding-left:50%;
+    font-size: 30px;
+}
+
+.carditem{
+    padding-right: 10%;
+}
+
+.title{
+    font-family:'Noto Sans', sans-serif ;
+    font-size: 19px;
+    padding-right: 6%;
+    font-weight: 500;
+    padding-left: 3%;
+}
+.disp-img{
+    opacity: 0.9;
 }
