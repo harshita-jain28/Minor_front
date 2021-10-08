@@ -1,4 +1,28 @@
 .donutchart{
-    padding-top:10%;
+    padding-top:4%;
+    padding-right: 3%;
     opacity:0.8;
+}
+
+.donutchart-innertext-value{
+    font-size: 22px;
+}
+
+.dash{
+    font-size: 20px;
+}
+.graph{
+    background-color: #c2dddf;
+    width:100%;
+    padding:0;
+    margin:0;
+    box-shadow: none !important;
+}
+.daily{
+    padding-top:3%;
+    padding-left: 3%;
+    margin:0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    
 }

@@ -1,7 +1,7 @@
 import React from "react"
 // @ts-ignore
 import DonutChart from 'react-donut-chart'
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent,IonCard, IonHeader, IonPage, IonTitle, IonToolbar, IonCardTitle } from '@ionic/react';
 import { Group } from '@visx/group';
 import "./Graph.css"
 import {
@@ -70,24 +70,17 @@ export type GlyphProps = {
 };
 
 const Graph: React.FC<GlyphProps> = ({ width=100, height=100, margin = defaultMargin}) => {
-    if (width < 10) return null;
-
-  // bounds
-  const innerWidth = width - margin.left - margin.right;
-  const innerHeight = height - margin.top - margin.bottom;
-
-  // update scale range to match bounds
-  xScale.range([0, innerWidth]);
-  yScale.range([innerHeight, 0]);
+  
     return(
-        <IonPage>
-            <IonContent>
-           <IonTitle>Dashboard</IonTitle>
-    <DonutChart width="400" height="300" className="donutchart"
+       
+            <IonCard className="graph">
+              <IonCardTitle className="daily" color="secondary">Daily Report</IonCardTitle>
+    <DonutChart width="400" height="300" className="donutchart" clickToggle={false} 
     colors={['#C9CC3F','#D2042D', '#0398DB','#FFBF00','#C41E3A','#3949A3' ]}
     data={[{
         label: 'Joy',
-        value: 35
+        value: 35,
+        className: 'joy-data'
     },
     {
         label: 'Anger',
@@ -111,8 +104,8 @@ const Graph: React.FC<GlyphProps> = ({ width=100, height=100, margin = defaultMa
 }
 
     ]} />
-            </IonContent>
-        </IonPage>
+            </IonCard>
+       
     );
 }
 
