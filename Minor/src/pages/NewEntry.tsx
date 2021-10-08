@@ -33,8 +33,10 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
     }
     const newentry = () => {
         var rand = items[Math.floor(Math.random() * items.length)]
+        console.log(rand);
         setUrl(rand);
         setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
+
         setEntries(prevItems => [
             ...prevItems,
             {

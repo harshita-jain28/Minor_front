@@ -34,7 +34,7 @@ const App: React.FC = () => {
   const [entries, setEntries] = useState([{}])
   const [title, setTitle] = useState("");
   const [diary, setDiary] = useState("");
-  const [divstyle, setStyle] = useState({});
+  const [divstyle, setStyle] = useState({"backgroundImage": "https://i.postimg.cc/hjZSJb9V/bg4.png"});
   const [iswrite, setWrite] = useState(true);
   const [imgUrl, setUrl] = useState("https://i.postimg.cc/QCSnN01r/bg2.png");
   const [disImg,setImg] = useState(true);
@@ -48,7 +48,7 @@ const App: React.FC = () => {
               {iswrite ? (
                 <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
               ) :
-                <DisplayEntry />
+                <DisplayEntry setEntry={setEntry} setWrite={setWrite}/>
               }
             </Route>
             <Route path="/tab1" exact>
@@ -61,7 +61,7 @@ const App: React.FC = () => {
               {iswrite ? (
                 <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
               ) :
-                <DisplayEntry />
+                <DisplayEntry  setEntry={setEntry} setWrite={setWrite}/>
               }
             </Route>
           </IonRouterOutlet>

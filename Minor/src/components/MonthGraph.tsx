@@ -22,7 +22,6 @@ const MonthGraph: React.FC = () =>{
       { x: "2021/10/21", y: 'Love'},
       { x: "2021/10/22",y: 'Fear'},
       { x: "2021/11/23", y: 'Surprise'},
-      { x: "2022/01/29", y: 'Fear'},
 
 
 
