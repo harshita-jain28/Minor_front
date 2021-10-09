@@ -9,7 +9,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse,  barChartOutline, calendarClearOutline } from 'ionicons/icons';
+import { ellipse, barChartOutline, calendarClearOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -34,10 +34,10 @@ const App: React.FC = () => {
   const [entries, setEntries] = useState([{}])
   const [title, setTitle] = useState("");
   const [diary, setDiary] = useState("");
-  const [divstyle, setStyle] = useState({"backgroundImage": "https://i.postimg.cc/hjZSJb9V/bg4.png"});
+  const [divstyle, setStyle] = useState({ "backgroundImage": "https://i.postimg.cc/hjZSJb9V/bg4.png" });
   const [iswrite, setWrite] = useState(true);
   const [imgUrl, setUrl] = useState("https://i.postimg.cc/QCSnN01r/bg2.png");
-  const [disImg,setImg] = useState(true);
+  const [disImg, setImg] = useState(true);
 
   return (
     <IonApp>
@@ -46,22 +46,22 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route path="/" exact>
               {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
+                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} />
               ) :
-                <DisplayEntry setEntry={setEntry} setWrite={setWrite}/>
+                <DisplayEntry setEntry={setEntry} setWrite={setWrite} />
               }
             </Route>
             <Route path="/tab1" exact>
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} />
             </Route>
             <Route path="/tab3" exact>
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
+              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} />
             </Route>
             <Route path="/tab2" exact>
               {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg}/>
+                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} />
               ) :
-                <DisplayEntry  setEntry={setEntry} setWrite={setWrite}/>
+                <DisplayEntry setEntry={setEntry} setWrite={setWrite} />
               }
             </Route>
           </IonRouterOutlet>
@@ -74,7 +74,7 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/tab2">
 
-                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg}/>
+                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} />
 
               </Route>
               <Route path="/tab3">

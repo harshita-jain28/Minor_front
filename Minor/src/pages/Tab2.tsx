@@ -1,9 +1,7 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch } from 'react';
 import {
-  IonFab,
   IonCard,
   IonCardTitle,
-  IonFabButton,
   IonIcon,
   IonContent,
   IonItem,
@@ -11,7 +9,7 @@ import {
 } from '@ionic/react';
 import './Tab2.css';
 import EntryCard from "../components/EntryCard";
-import { addOutline, addCircleOutline } from 'ionicons/icons';
+import { addCircleOutline } from 'ionicons/icons';
 
 type Props = {
   setEntry: Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +18,7 @@ type Props = {
   setWrite: Dispatch<React.SetStateAction<boolean>>;
   disImg: boolean;
 };
-const Tab2: React.FC<Props> = ({ disImg,setWrite, setEntry, entries, selDate }) => {
+const Tab2: React.FC<Props> = ({ disImg, setWrite, setEntry, entries, selDate }) => {
   const create = () => {
     setEntry(true);
   }
@@ -29,20 +27,15 @@ const Tab2: React.FC<Props> = ({ disImg,setWrite, setEntry, entries, selDate }) 
     <IonPage>
       <IonContent fullscreen>
         <IonCard className="addcard" >
-          <IonItem  className="cardItem">
+          <IonItem className="cardItem">
             <IonCardTitle className="title" color="secondary" >Add Entry</IonCardTitle>
-            <IonIcon icon={addCircleOutline}  color="primary" onClick={() => create()} className="add-btn"></IonIcon>
-            {/* <IonFab horizontal="end" >
-              <IonFabButton className="btn" size="small" onClick={() => create()}>
-                <IonIcon icon={addOutline} ></IonIcon>
-              </IonFabButton>
-            </IonFab> */}
+            <IonIcon icon={addCircleOutline} color="primary" onClick={() => create()} className="add-btn"></IonIcon>
           </IonItem>
         </IonCard>
         {disImg &&
-        <div>
-          <img className="disp-img" src="https://i.postimg.cc/0y3wP15K/WELCOME-TO-EMODAR-1.png"></img>
-        </div>
+          <div>
+            <img className="disp-img" src="https://i.postimg.cc/0y3wP15K/WELCOME-TO-EMODAR-1.png"></img>
+          </div>
         }
         {entries.filter(v => Object.keys(v).length).map((entry: any) => (
           <EntryCard key={entry} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} />

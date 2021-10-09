@@ -1,4 +1,4 @@
-import { useState, Dispatch } from 'react';
+import { Dispatch } from 'react';
 import {
     IonButton,
     IonContent,
@@ -74,7 +74,7 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
             <IonFooter className="footer ion-no-border" >
                 <IonButton shape="round" type="submit" className="foot-btn" onClick={() => cancelentry()} >Cancel</IonButton>
 
-                <IonButton shape="round" type="submit" color="secondary"  onClick={() => newentry()} >Create</IonButton>
+                <IonButton shape="round" type="submit" color="secondary" onClick={() => newentry()} >Create</IonButton>
             </IonFooter>
         </IonPage>
 
