@@ -5,23 +5,34 @@ import {
     IonCardContent,
     IonCardSubtitle,
     IonCardHeader,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
+    IonIcon,
+    IonItem
 } from '@ionic/react';
 import "./EntryCard.css"
+import { addCircleOutline, trashOutline,createOutline} from 'ionicons/icons';
+
 type CardProps = {
     title: string;
     selDate: string;
     divStyle: {};
     setWrite: Dispatch<React.SetStateAction<boolean>>;
     setEntry: Dispatch<React.SetStateAction<boolean>>;
+    removeEntry: Function,
+    entryId: number,
 
 };
-const EntryCard: React.FC<CardProps> = ({ setEntry, setWrite, divStyle, title, selDate }) => {
+const EntryCard: React.FC<CardProps> = ({ removeEntry,entryId,setEntry, setWrite, divStyle, title, selDate }) => {
     const readEntry = () => {
         setEntry(true);
         setWrite(false);
     }
     return (
-        <IonCard style={divStyle} onClick={readEntry} >
+        <IonItemSliding className="card entryId">
+        <IonItem lines="none" className="item_card" style={divStyle} >
+        <IonCard style={divStyle} onClick={readEntry} className="entrycard">
             <IonCardContent className="entrycard">
                 <IonCardHeader>
                     <IonCardSubtitle >{selDate} </IonCardSubtitle>
@@ -30,6 +41,23 @@ const EntryCard: React.FC<CardProps> = ({ setEntry, setWrite, divStyle, title, s
             </IonCardContent>
 
         </IonCard>
+        </IonItem>
+        <IonItemOptions side="start">
+                <IonItemOption  color="secondary" expandable>
+                  <IonIcon icon={createOutline} className="icons"></IonIcon>
+                 
+                </IonItemOption>
+                
+                
+                </IonItemOptions>
+                <IonItemOptions side="end">
+               
+                <IonItemOption color="medium" expandable>
+                  <IonIcon icon={trashOutline} className="icons" onClick={()=>removeEntry(entryId)}></IonIcon>
+                    
+                </IonItemOption>
+                </IonItemOptions>
+        </IonItemSliding>
 
     )
 }

@@ -17,30 +17,37 @@ type EntryProps = {
     title: string;
     setDiary: Dispatch<React.SetStateAction<string>>
     setTitle: Dispatch<React.SetStateAction<string>>
-    setEntries: Dispatch<React.SetStateAction<{}[]>>
+    setEntries: Dispatch<React.SetStateAction<{ id: any; date: any,title: any,story: any,background: any }[]>>
     setStyle: Dispatch<React.SetStateAction<{ backgroundImage: string }>>
     imgUrl: string;
     setUrl: Dispatch<React.SetStateAction<string>>;
     divstyle: {},
     setImg: Dispatch<React.SetStateAction<boolean>>;
+    diaId: number;
+    setId: Dispatch<React.SetStateAction<number>>
+    entries: Array<{id: any;}>
 
 };
-const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries, setImg }) => {
+const NewEntry: React.FC<EntryProps> = ({entries, divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries, setImg,diaId,setId }) => {
     var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
     const cancelentry = () => {
         setEntry(false)
 
     }
     const newentry = () => {
+        let newId = diaId;
+        setId(newId+1);
+        
+        setTimeout(()=>console.log(diaId),10000)
         var rand = items[Math.floor(Math.random() * items.length)]
-        console.log(rand);
+       
         setUrl(rand);
         setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
-
+        // console.log(entries)
         setEntries(prevItems => [
             ...prevItems,
             {
-                "id": 1,
+                "id": diaId,
                 "date": selDate,
                 "title": title,
                 "story": diary,
@@ -54,7 +61,7 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
             <IonContent >
                 <IonTitle className="ion-padding ion-text-center write">Write</IonTitle>
                 <IonText className="ion-padding date" color="secondary">Date: {selDate} </IonText>
-                <form className="ion-padding">
+                <form className="ion-padding" onSubmit={newentry}>
                     <IonText className="ion-padding txt">Title</IonText>
                     <IonInput
                         className="ion-padding inp"
@@ -68,14 +75,16 @@ const NewEntry: React.FC<EntryProps> = ({ divstyle, setUrl, imgUrl, setStyle, se
                     ></IonInput>
                     <IonText className="ion-padding txt">Entry</IonText>
                     <IonTextarea className="entry" autoGrow={true} placeholder="Write entry" onIonChange={e => setDiary(e.detail.value!)} required></IonTextarea>
-                </form>
-
+                    
+            </form>
+           
             </IonContent>
             <IonFooter className="footer ion-no-border" >
                 <IonButton shape="round" type="submit" className="foot-btn" onClick={() => cancelentry()} >Cancel</IonButton>
 
-                <IonButton shape="round" type="submit" color="secondary" onClick={() => newentry()} >Create</IonButton>
+                <IonButton shape="round" type="submit" color="secondary"  onClick={newentry}>Create</IonButton>
             </IonFooter>
+            
         </IonPage>
 
     );

@@ -15,7 +15,7 @@ const Graph: React.FC = () => {
   return (
 
     <IonCard className="graph">
-      <IonCardTitle className="daily" color="secondary">Daily Report</IonCardTitle>
+      <IonCardTitle className="daily" color="secondary">Monthly Report</IonCardTitle>
       <DonutChart width="400" height="300" className="donutchart" clickToggle={false}
         colors={['#C9CC3F', '#D2042D', '#0398DB', '#FFBF00', '#C41E3A', '#3949A3']}
         data={[{

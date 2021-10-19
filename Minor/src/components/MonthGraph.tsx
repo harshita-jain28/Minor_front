@@ -30,7 +30,7 @@ const MonthGraph: React.FC = () => {
   });
   return (
     <IonCard className="graph">
-      <IonCardTitle className="daily" color="secondary">Monthly Report</IonCardTitle>
+      {/* <IonCardTitle className="daily" color="secondary">Monthly Report</IonCardTitle> */}
       <ScatterChart
         width={350}
         height={350}
