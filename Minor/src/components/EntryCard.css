@@ -17,8 +17,14 @@
     margin:0;
 }
 .card{
+    padding:0;
+    margin:0;
     margin-bottom: 3%;
 }
 .icons{
     font-size: 20px;
+}
+.entryHeader{
+padding-bottom:0;
+   margin:0;
 }

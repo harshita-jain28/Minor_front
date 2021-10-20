@@ -36,7 +36,7 @@ const EntryCard: React.FC<CardProps> = ({displayEntry, removeEntry,entryId,setEn
         <IonItem lines="none" className="item_card" style={divStyle} >
         <IonCard style={divStyle} onClick={()=>displayEntry(entryId)} className="entrycard">
             <IonCardContent className="entrycard">
-                <IonCardHeader>
+                <IonCardHeader className="entryHeader">
                     <IonCardSubtitle >{selDate} </IonCardSubtitle>
                     <IonCardTitle className="head" >{title}</IonCardTitle>
                 </IonCardHeader>

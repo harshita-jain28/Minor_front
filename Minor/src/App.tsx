@@ -42,6 +42,34 @@ const App: React.FC = () => {
   const [dispDate,setDispDate] = useState("")
   const [dispTitle,setDispTitle] = useState("")
   const [dispText, setText] = useState("")
+
+  const removeEntry = (diaId: number) => {
+    console.log(diaId)
+    const newSelectedEntry: any = entries.filter((entry) => {
+
+      return entry.id !== diaId;
+    });
+    console.log(newSelectedEntry);
+    setEntries(newSelectedEntry);
+
+  };
+
+  const displayEntry = (diaId: number) =>{
+    
+    const selectEntry: any = entries.filter((entry)=>{
+      return entry.id == diaId;
+    });
+    selectEntry.map((entry: any) => {
+      setDispDate(entry.date)
+      setText(entry.story)
+      setDispTitle(entry.title)
+    })
+    setEntry(true);
+    setWrite(false);
+
+    
+  }
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -55,7 +83,11 @@ const App: React.FC = () => {
               }
             </Route>
             <Route path="/tab1" exact>
+            {iswrite ? (
               <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} />
+              ) :
+              <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
+            }
             </Route>
             <Route path="/tab3" exact>
               <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
@@ -73,7 +105,7 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet>
               <Route exact path="/tab1">
-                <Tab1 setSelDate={setSelDate} />
+                <Tab1 setSelDate={setSelDate} entries={entries} setEntry={setEntry}  selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText}/>
               </Route>
               <Route exact path="/tab2">
 

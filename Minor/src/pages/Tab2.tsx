@@ -17,7 +17,7 @@ import { addCircleOutline } from 'ionicons/icons';
 
 type Props = {
   setEntry: Dispatch<React.SetStateAction<boolean>>;
-  entries: Array<{id: any;}>;
+  entries: Array<{id: any; date: any,title: any,story: any,background: any}>;
   selDate: string;
   setWrite: Dispatch<React.SetStateAction<boolean>>;
   disImg: boolean;
