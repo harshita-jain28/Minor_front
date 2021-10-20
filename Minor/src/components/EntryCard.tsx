@@ -22,17 +22,19 @@ type CardProps = {
     setEntry: Dispatch<React.SetStateAction<boolean>>;
     removeEntry: Function,
     entryId: number,
+    displayEntry: Function,
 
 };
-const EntryCard: React.FC<CardProps> = ({ removeEntry,entryId,setEntry, setWrite, divStyle, title, selDate }) => {
+const EntryCard: React.FC<CardProps> = ({displayEntry, removeEntry,entryId,setEntry, setWrite, divStyle, title, selDate }) => {
     const readEntry = () => {
         setEntry(true);
         setWrite(false);
+        displayEntry(entryId);
     }
     return (
         <IonItemSliding className="card entryId">
         <IonItem lines="none" className="item_card" style={divStyle} >
-        <IonCard style={divStyle} onClick={readEntry} className="entrycard">
+        <IonCard style={divStyle} onClick={()=>displayEntry(entryId)} className="entrycard">
             <IonCardContent className="entrycard">
                 <IonCardHeader>
                     <IonCardSubtitle >{selDate} </IonCardSubtitle>

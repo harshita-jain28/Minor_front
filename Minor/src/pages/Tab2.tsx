@@ -22,18 +22,40 @@ type Props = {
   setWrite: Dispatch<React.SetStateAction<boolean>>;
   disImg: boolean;
   setEntries: Dispatch<React.SetStateAction<{ id: any; date: any,title: any,story: any,background: any }[]>>,
+  setText: Dispatch<React.SetStateAction<string>>,
+  setDispTitle: Dispatch<React.SetStateAction<string>>,
+  setDispDate: Dispatch<React.SetStateAction<string>>
+
+
 };
-const Tab2: React.FC<Props> = ({ disImg, setWrite, setEntry, entries, selDate, setEntries}) => {
+const Tab2: React.FC<Props> = ({ setDispDate, setDispTitle, setText, disImg, setWrite, setEntry, entries, selDate, setEntries}) => {
   const create = () => {
     setEntry(true);
   }
+  const displayEntry = (diaId: number) =>{
+    
+    const selectEntry: any = entries.filter((entry)=>{
+      return entry.id == diaId;
+    });
+    selectEntry.map((entry: any) => {
+      setDispDate(entry.date)
+      setText(entry.story)
+      setDispTitle(entry.title)
+    })
+    setEntry(true);
+    setWrite(false);
+
+    
+  }
   const removeEntry = (diaId: number) => {
     console.log(diaId)
-    const newSelectedRest: any = entries.filter((rest) => {
+    const newSelectedEntry: any = entries.filter((entry) => {
 
-      return rest.id !== diaId;
+      return entry.id !== diaId;
     });
-    setEntries(newSelectedRest);
+    console.log(newSelectedEntry);
+    setEntries(newSelectedEntry);
+
   };
   return (
     <IonPage>
@@ -52,7 +74,7 @@ const Tab2: React.FC<Props> = ({ disImg, setWrite, setEntry, entries, selDate, s
         {entries.filter(v => Object.keys(v).length).map((entry: any) => {
           //  console.log(entries)
            return(
-           <EntryCard entryId={entry.id} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} />
+           <EntryCard entryId={entry.id} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry}/>
            )
          
 })}

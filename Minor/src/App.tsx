@@ -39,6 +39,9 @@ const App: React.FC = () => {
   const [imgUrl, setUrl] = useState("https://i.postimg.cc/QCSnN01r/bg2.png");
   const [disImg, setImg] = useState(true);
   const [diaId, setId] = useState(1);
+  const [dispDate,setDispDate] = useState("")
+  const [dispTitle,setDispTitle] = useState("")
+  const [dispText, setText] = useState("")
   return (
     <IonApp>
       <IonReactRouter>
@@ -48,7 +51,7 @@ const App: React.FC = () => {
               {iswrite ? (
                 <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
               ) :
-                <DisplayEntry setEntry={setEntry} setWrite={setWrite} />
+                <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
               }
             </Route>
             <Route path="/tab1" exact>
@@ -61,7 +64,7 @@ const App: React.FC = () => {
               {iswrite ? (
                 <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
               ) :
-                <DisplayEntry setEntry={setEntry} setWrite={setWrite} />
+                <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
               }
             </Route>
           </IonRouterOutlet>
@@ -74,7 +77,7 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/tab2">
 
-                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries}/>
+                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
 
               </Route>
               <Route path="/tab3">
