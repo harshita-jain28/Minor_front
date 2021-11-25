@@ -44,11 +44,13 @@ const Signup: React.FC<Props> = ({setIsLoggedin,setName}) =>{
             if (userResponse.status == 201) {
                 console.log("User success");
                 setIsLoggedin(true);
-                // userResponse.json().then((data) => {  
+                userResponse.json().then((data) => {  
                 //     localStorage.setItem("name", data.user.name);
-                //     console.log(data);
+                   console.log(data);
+                   setName(data.username)
 
-                // })   
+                }) 
+
             } else{
                 console.log("error");
                 userResponse.json().then((data) => {

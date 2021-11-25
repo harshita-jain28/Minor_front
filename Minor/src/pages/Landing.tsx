@@ -16,9 +16,10 @@ import "./Landing.css"
 type LandProps = {
   setIsLoggedin: Dispatch<React.SetStateAction<boolean>>;
   setUsername: Dispatch<React.SetStateAction<string>>;
+  username: string
 };
 
-const Landing: React.FC<LandProps> = ({ setIsLoggedin, setUsername }) => {
+const Landing: React.FC<LandProps> = ({ setIsLoggedin, setUsername,username }) => {
   const slider = useRef<HTMLIonSlidesElement>(null);
   const [value, setValue] = useState("0");
 
@@ -58,7 +59,7 @@ const Landing: React.FC<LandProps> = ({ setIsLoggedin, setUsername }) => {
       <IonContent>
         <IonSlides pager={true} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)} ref={slider}>
           <IonSlide>
-            <Login></Login>
+            <Login setIsLoggedin={setIsLoggedin} setName={setUsername} username={username}></Login>
           </IonSlide>
           <IonSlide>
             <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} ></Signup>

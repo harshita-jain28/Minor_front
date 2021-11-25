@@ -32,7 +32,7 @@ import Landing from './pages/Landing';
 const App: React.FC = () => {
   const [isEntry, setEntry] = useState<boolean>(false)
   const [seldate, setSelDate] = useState(new Date().toLocaleDateString() + "");
-  const [entries, setEntries] = useState<{ id: any; date: any,title: any,story: any,background: any }[]>([])
+  const [entries, setEntries] = useState<{ id: any; date: any, title: any, story: any, background: any }[]>([])
   const [title, setTitle] = useState("");
   const [diary, setDiary] = useState("");
   const [divstyle, setStyle] = useState({ "backgroundImage": "url(https://i.postimg.cc/hjZSJb9V/bg4.png)" });
@@ -40,8 +40,8 @@ const App: React.FC = () => {
   const [imgUrl, setUrl] = useState("https://i.postimg.cc/QCSnN01r/bg2.png");
   const [disImg, setImg] = useState(true);
   const [diaId, setId] = useState(1);
-  const [dispDate,setDispDate] = useState("")
-  const [dispTitle,setDispTitle] = useState("")
+  const [dispDate, setDispDate] = useState("")
+  const [dispTitle, setDispTitle] = useState("")
   const [dispText, setText] = useState("")
 
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -59,9 +59,9 @@ const App: React.FC = () => {
 
   };
 
-  const displayEntry = (diaId: number) =>{
-    
-    const selectEntry: any = entries.filter((entry)=>{
+  const displayEntry = (diaId: number) => {
+
+    const selectEntry: any = entries.filter((entry) => {
       return entry.id == diaId;
     });
     selectEntry.map((entry: any) => {
@@ -72,7 +72,7 @@ const App: React.FC = () => {
     setEntry(true);
     setWrite(false);
 
-    
+
   }
 
   return (
@@ -80,90 +80,86 @@ const App: React.FC = () => {
       <IonReactRouter>
         {!isLoggedin ? (<IonRouterOutlet>
           <Route path="/" exact>
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
-              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
-            </Route>
-            <Route path="/tab1" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
-              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
-            </Route>
-            <Route path="/tab2" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
-              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
-            </Route>
-            <Route path="/tab3" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
-              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
-            </Route>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+          </Route>
+          <Route path="/tab1" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+          </Route>
+          <Route path="/tab2" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+          </Route>
+          <Route path="/tab3" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+          </Route>
         </IonRouterOutlet>)
-        :
-        (
-          <>
-        {isEntry ? (
-          <IonRouterOutlet>
-            <Route path="/" exact>
-              {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
-              ) :
-                <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
-              }
-            </Route>
-            <Route path="/tab1" exact>
-            {iswrite ? (
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} />
-              ) :
-              <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
-            }
-            </Route>
-            <Route path="/tab3" exact>
-              <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
-            </Route>
-            <Route path="/tab2" exact>
-              {iswrite ? (
-                <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries}/>
-              ) :
-                <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
-              }
-            </Route>
-          </IonRouterOutlet>
+          :
+          (
+            <>
+              {isEntry ? (
+                <IonRouterOutlet>
+                  <Route path="/" exact>
+                    {iswrite ? (
+                      <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName} />
+                    ) :
+                      <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
+                    }
+                  </Route>
+                  <Route path="/tab1" exact>
+                    {iswrite ? (
+                      <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName}/>
+                    ) :
+                      <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
+                    }
+                  </Route>
+                  <Route path="/tab3" exact>
+                    <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName}/>
+                  </Route>
+                  <Route path="/tab2" exact>
+                    {iswrite ? (
+                      <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName} />
+                    ) :
+                      <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
+                    }
+                  </Route>
+                </IonRouterOutlet>
 
-        ) : (
-          <IonTabs >
-            <IonRouterOutlet>
-              <Route exact path="/tab1">
-                <Tab1 setSelDate={setSelDate} entries={entries} setEntry={setEntry}  selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText}/>
-              </Route>
-              <Route exact path="/tab2">
+              ) : (
+                <IonTabs >
+                  <IonRouterOutlet>
+                    <Route exact path="/tab1">
+                      <Tab1 setSelDate={setSelDate} entries={entries} setEntry={setEntry} selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
+                    </Route>
+                    <Route exact path="/tab2">
 
-                <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
+                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
 
-              </Route>
-              <Route path="/tab3">
-                <Tab3 />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/tab1" />
-              </Route>
-            </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="tab1" href="/tab1">
-                <IonIcon icon={calendarClearOutline} />
+                    </Route>
+                    <Route path="/tab3">
+                      <Tab3 />
+                    </Route>
+                    <Route exact path="/">
+                      <Redirect to="/tab1" />
+                    </Route>
+                  </IonRouterOutlet>
+                  <IonTabBar slot="bottom">
+                    <IonTabButton tab="tab1" href="/tab1">
+                      <IonIcon icon={calendarClearOutline} />
 
-              </IonTabButton>
-              <IonTabButton tab="tab2" href="/tab2">
-                <IonIcon icon={ellipse} />
+                    </IonTabButton>
+                    <IonTabButton tab="tab2" href="/tab2">
+                      <IonIcon icon={ellipse} />
 
-              </IonTabButton>
-              <IonTabButton tab="tab3" href="/tab3">
-                <IonIcon icon={barChartOutline} />
+                    </IonTabButton>
+                    <IonTabButton tab="tab3" href="/tab3">
+                      <IonIcon icon={barChartOutline} />
 
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        )}
-        </>
-        )}
-        
+                    </IonTabButton>
+                  </IonTabBar>
+                </IonTabs>
+              )}
+            </>
+          )}
+
       </IonReactRouter>
 
     </IonApp>

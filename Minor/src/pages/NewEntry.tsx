@@ -26,9 +26,10 @@ type EntryProps = {
     diaId: number;
     setId: Dispatch<React.SetStateAction<number>>
     entries: Array<{id: any;}>
+    username:string,
 
 };
-const NewEntry: React.FC<EntryProps> = ({entries, divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries, setImg,diaId,setId }) => {
+const NewEntry: React.FC<EntryProps> = ({username,entries, divstyle, setUrl, imgUrl, setStyle, setEntry, selDate, setTitle, title, setDiary, diary, setEntries, setImg,diaId,setId }) => {
     var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
     const cancelentry = () => {
         setEntry(false)
@@ -55,6 +56,31 @@ const NewEntry: React.FC<EntryProps> = ({entries, divstyle, setUrl, imgUrl, setS
             }])
         setImg(false);
         setEntry(false)
+        console.log(username)
+        fetch(process.env.REACT_APP_BACKEND_API_URL + "Add-notes/" , {
+            method: "POST",
+            headers: { Authorization: `JWT ${localStorage.getItem("token")}`, "Content-Type": "application/json" },
+            body: JSON.stringify({username:username ,entry: diary}),
+        }).then((res) => {
+            if(res.status == 200){
+                console.log("added");
+            }else {
+                console.log("error");
+                res.json().then((data) => {
+                  // TODO: Display the errors on screen
+                  console.log(data);
+                });
+            }
+        })
+        .catch((error) => {
+            console.log("error");
+            console.log(error);
+          });
+
+          console.log(username)
+
+        
+        
     }
     return (
         <IonPage>
