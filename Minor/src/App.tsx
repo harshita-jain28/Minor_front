@@ -27,7 +27,8 @@ import '@ionic/react/css/display.css';
 
 import './theme/variables.css';
 import NewEntry from './pages/NewEntry';
-
+import Signup from './pages/Signup'
+import Landing from './pages/Landing';
 const App: React.FC = () => {
   const [isEntry, setEntry] = useState<boolean>(false)
   const [seldate, setSelDate] = useState(new Date().toLocaleDateString() + "");
@@ -42,6 +43,10 @@ const App: React.FC = () => {
   const [dispDate,setDispDate] = useState("")
   const [dispTitle,setDispTitle] = useState("")
   const [dispText, setText] = useState("")
+
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [userName, setUsername] = useState<string>("Ramu");
+
 
   const removeEntry = (diaId: number) => {
     console.log(diaId)
@@ -73,6 +78,27 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
+        {!isLoggedin ? (<IonRouterOutlet>
+          <Route path="/" exact>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
+              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
+            </Route>
+            <Route path="/tab1" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
+              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
+            </Route>
+            <Route path="/tab2" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
+              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
+            </Route>
+            <Route path="/tab3" exact >
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  ></Landing>
+              {/* <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} /> */}
+            </Route>
+        </IonRouterOutlet>)
+        :
+        (
+          <>
         {isEntry ? (
           <IonRouterOutlet>
             <Route path="/" exact>
@@ -102,7 +128,7 @@ const App: React.FC = () => {
           </IonRouterOutlet>
 
         ) : (
-          <IonTabs>
+          <IonTabs >
             <IonRouterOutlet>
               <Route exact path="/tab1">
                 <Tab1 setSelDate={setSelDate} entries={entries} setEntry={setEntry}  selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText}/>
@@ -135,6 +161,9 @@ const App: React.FC = () => {
             </IonTabBar>
           </IonTabs>
         )}
+        </>
+        )}
+        
       </IonReactRouter>
 
     </IonApp>

@@ -61,7 +61,7 @@ const Tab2: React.FC<Props> = ({ setDispDate, setDispTitle, setText, disImg, set
     <IonPage>
       <IonContent fullscreen>
         <IonCard className="addcard" >
-          <IonItem className="cardItem">
+          <IonItem className="cardItem" lines="none">
             <IonCardTitle className="title" color="secondary" >Add Entry</IonCardTitle>
             <IonIcon icon={addCircleOutline} color="primary" onClick={() => create()} className="add-btn"></IonIcon>
           </IonItem>

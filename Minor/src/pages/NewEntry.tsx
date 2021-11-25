@@ -38,7 +38,7 @@ const NewEntry: React.FC<EntryProps> = ({entries, divstyle, setUrl, imgUrl, setS
         let newId = diaId;
         setId(newId+1);
         
-        setTimeout(()=>console.log(diaId),10000)
+        // setTimeout(()=>console.log(diaId),10000)
         var rand = items[Math.floor(Math.random() * items.length)]
        
         setUrl(rand);
