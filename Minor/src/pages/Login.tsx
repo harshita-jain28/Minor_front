@@ -12,7 +12,6 @@ type LoginProps = {
 const Login: React.FC<LoginProps> = ({setIsLoggedin,setName,username}) =>{
     // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
     const login = async (e: React.FormEvent) => {
         e.preventDefault();
 

@@ -37,8 +37,9 @@ const Signup: React.FC<Props> = ({setIsLoggedin,setName}) =>{
           console.log(process.env.REACT_APP_BACKEND_API_URL)
           fetch(process.env.REACT_APP_BACKEND_API_URL + "register/", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: { "Content-Type": "application/json", accept: 'application/json' },
               body: JSON.stringify(json),
+
           })
           .then((userResponse) =>{
             if (userResponse.status == 201) {
@@ -54,7 +55,6 @@ const Signup: React.FC<Props> = ({setIsLoggedin,setName}) =>{
             } else{
                 console.log("error");
                 userResponse.json().then((data) => {
-                  // TODO: Display the errors on screen
                   console.log(data);
                 })
             }

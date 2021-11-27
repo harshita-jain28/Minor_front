@@ -57,24 +57,39 @@ const NewEntry: React.FC<EntryProps> = ({username,entries, divstyle, setUrl, img
         setImg(false);
         setEntry(false)
         console.log(username)
+        console.log(diary)
+
         fetch(process.env.REACT_APP_BACKEND_API_URL + "Add-notes/" , {
             method: "POST",
-            headers: { Authorization: `JWT ${localStorage.getItem("token")}`, "Content-Type": "application/json" },
-            body: JSON.stringify({username:username ,entry: diary}),
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
+            body: JSON.stringify({ username: username ,entry: diary }),
         }).then((res) => {
+            // res.json().then((data) =>{
+            //     console.log(data)
+            // })
             if(res.status == 200){
                 console.log("added");
+                res.json().then((data) =>{
+                         console.log(data)
+                     })
+
             }else {
                 console.log("error");
-                res.json().then((data) => {
-                  // TODO: Display the errors on screen
-                  console.log(data);
-                });
+                console.log(localStorage.getItem("token"))
+                console.log(username)
+                console.log(diary)
+                
+
+                // res.json().then((data) => {
+                //   // TODO: Display the errors on screen
+                //   console.log(data);
+                // });
             }
         })
         .catch((error) => {
-            console.log("error");
+            // console.log("error");
             console.log(error);
+            console.log(localStorage.getItem("token"))
           });
 
           console.log(username)
