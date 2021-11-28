@@ -62,11 +62,9 @@ const NewEntry: React.FC<EntryProps> = ({username,entries, divstyle, setUrl, img
         fetch(process.env.REACT_APP_BACKEND_API_URL + "Add-notes/" , {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
-            body: JSON.stringify({ username: username ,entry: diary }),
+            body: JSON.stringify({ username: username ,entry: diary, title: title }),
         }).then((res) => {
-            // res.json().then((data) =>{
-            //     console.log(data)
-            // })
+            
             if(res.status == 200){
                 console.log("added");
                 res.json().then((data) =>{

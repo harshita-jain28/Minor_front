@@ -80,16 +80,16 @@ const App: React.FC = () => {
       <IonReactRouter>
         {!isLoggedin ? (<IonRouterOutlet>
           <Route path="/" exact>
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries} ></Landing>
           </Route>
           <Route path="/tab1" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
           </Route>
           <Route path="/tab2" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
           </Route>
           <Route path="/tab3" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
           </Route>
         </IonRouterOutlet>)
           :
@@ -131,11 +131,11 @@ const App: React.FC = () => {
                     </Route>
                     <Route exact path="/tab2">
 
-                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
+                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName}/>
 
                     </Route>
                     <Route path="/tab3">
-                      <Tab3 />
+                      <Tab3 username={userName}></Tab3>
                     </Route>
                     <Route exact path="/">
                       <Redirect to="/tab1" />

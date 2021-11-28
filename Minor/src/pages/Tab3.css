@@ -1,0 +1,12 @@
+.top-card{
+    box-shadow: none !important;
+    padding:0;
+    margin:0;
+    border-bottom: 1px solid rgb(15,96,107,0.5) ;
+
+}
+
+.top-grid{
+    padding:0;
+    margin:0;
+}

@@ -6,6 +6,13 @@ import {
   IonContent,
   IonItem,
   IonPage,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCardHeader,
+IonAvatar,
+IonButton,
+IonCardSubtitle,
   IonItemSliding,
   IonItemOptions,
   IonItemOption,
@@ -13,7 +20,7 @@ import {
 } from '@ionic/react';
 import './Tab2.css';
 import EntryCard from "../components/EntryCard";
-import { addCircleOutline } from 'ionicons/icons';
+import { addCircleOutline, powerOutline } from 'ionicons/icons';
 
 type Props = {
   setEntry: Dispatch<React.SetStateAction<boolean>>;
@@ -25,10 +32,10 @@ type Props = {
   setText: Dispatch<React.SetStateAction<string>>,
   setDispTitle: Dispatch<React.SetStateAction<string>>,
   setDispDate: Dispatch<React.SetStateAction<string>>
-
+  username: string;
 
 };
-const Tab2: React.FC<Props> = ({ setDispDate, setDispTitle, setText, disImg, setWrite, setEntry, entries, selDate, setEntries}) => {
+const Tab2: React.FC<Props> = ({username, setDispDate, setDispTitle, setText, disImg, setWrite, setEntry, entries, selDate, setEntries}) => {
   const create = () => {
     setEntry(true);
   }
@@ -60,6 +67,7 @@ const Tab2: React.FC<Props> = ({ setDispDate, setDispTitle, setText, disImg, set
   return (
     <IonPage>
       <IonContent fullscreen>
+    
         <IonCard className="addcard" >
           <IonItem className="cardItem" lines="none">
             <IonCardTitle className="title" color="secondary" >Add Entry</IonCardTitle>

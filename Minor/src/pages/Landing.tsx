@@ -16,10 +16,17 @@ import "./Landing.css"
 type LandProps = {
   setIsLoggedin: Dispatch<React.SetStateAction<boolean>>;
   setUsername: Dispatch<React.SetStateAction<string>>;
-  username: string
+  username: string,
+  entries: Array<{id: any;}>,
+  setEntries: Dispatch<React.SetStateAction<{ id: any; date: any,title: any,story: any,background: any }[]>>,
+  setStyle: Dispatch<React.SetStateAction<{ backgroundImage: string }>>
+  imgUrl: string;
+  setUrl: Dispatch<React.SetStateAction<string>>;
+  divstyle: {},
+  setImg: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Landing: React.FC<LandProps> = ({ setIsLoggedin, setUsername,username }) => {
+const Landing: React.FC<LandProps> = ({entries,setEntries, setImg,setStyle,imgUrl,setUrl,divstyle, setIsLoggedin, setUsername,username }) => {
   const slider = useRef<HTMLIonSlidesElement>(null);
   const [value, setValue] = useState("0");
 
@@ -59,7 +66,7 @@ const Landing: React.FC<LandProps> = ({ setIsLoggedin, setUsername,username }) =
       <IonContent>
         <IonSlides pager={true} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)} ref={slider}>
           <IonSlide>
-            <Login setIsLoggedin={setIsLoggedin} setName={setUsername} username={username}></Login>
+            <Login setIsLoggedin={setIsLoggedin} setName={setUsername} username={username} entries={entries} setEntries={setEntries} setImg={setImg} divstyle={divstyle} setStyle={setStyle} setUrl={setUrl} imgUrl={imgUrl}></Login>
           </IonSlide>
           <IonSlide>
             <Signup setIsLoggedin={setIsLoggedin} setName={setUsername} ></Signup>
