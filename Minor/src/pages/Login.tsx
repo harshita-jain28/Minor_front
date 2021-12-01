@@ -1,29 +1,30 @@
 import React, { Dispatch, useState } from "react"
 import DataCards from "../components/DataCards"
-import { IonButton, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
-import { personAddOutline, keyOutline, personOutline, mailOutline, homeOutline, phonePortraitOutline, walletOutline, cardOutline } from "ionicons/icons";
+import {
+  IonButton,
+  IonContent,
+  IonGrid,
+  IonPage,
+} from "@ionic/react";
+import { personAddOutline, keyOutline, } from "ionicons/icons";
 
 type LoginProps = {
   setIsLoggedin: Dispatch<React.SetStateAction<boolean>>;
   setName: Dispatch<React.SetStateAction<string>>;
   username: string,
-  entries: Array<{id: any;}>,
-  setEntries: Dispatch<React.SetStateAction<{ id: any; date: any,title: any,story: any,background: any }[]>>,
+  entries: Array<{ id: any; }>,
+  setEntries: Dispatch<React.SetStateAction<{ id: any; date: any, title: any, story: any, background: any }[]>>,
   setStyle: Dispatch<React.SetStateAction<{ backgroundImage: string }>>
   imgUrl: string;
   setUrl: Dispatch<React.SetStateAction<string>>;
   divstyle: {},
   setImg: Dispatch<React.SetStateAction<boolean>>;
-
-
-
 };
 
-const Login: React.FC<LoginProps> = ({setImg,imgUrl,setUrl,setStyle,divstyle, setEntries,entries, setIsLoggedin, setName, username }) => {
+const Login: React.FC<LoginProps> = ({ setImg, imgUrl, setUrl, setStyle, divstyle, setEntries, entries, setIsLoggedin, setName, username }) => {
   var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
-
-  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -48,40 +49,49 @@ const Login: React.FC<LoginProps> = ({setImg,imgUrl,setUrl,setStyle,divstyle, se
             setIsLoggedin(true)
             console.log(username)
           })
-        }else{
+        } else {
           console.log("error")
         }
       });
 
-      var rand = items[Math.floor(Math.random() * items.length)]
-       
-      setUrl(rand);
+   
 
-      setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
-
-      fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-All-notes/",{
-        method: "POST",
-      headers: {"Content-Type": "application/json",Authorization: `Bearer ${localStorage.getItem("token")}`},
-      body: JSON.stringify({username: username}),
-      })
-      .then((res) =>{
-        if(res.status == 200){
+    fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-All-notes/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
+      body: JSON.stringify({ username: username }),
+    })
+      .then((res) => {
+        if (res.status == 200) {
           console.log("added");
-          res.json().then((data) =>{
-                   console.log(data)
-                   data.map((entry:any) => {setEntries(prevItems => [
-                    ...prevItems,
-                    {
-                        "id": entry.id,
-                        "date": entry.Date_of_entry,
-                        "title": entry.Title,
-                        "story": entry.Entry,
-                        "background": divstyle,
-                    }])})
-                   
-                    setImg(false);
+          res.json().then((data) => {
+            var rand = items[Math.floor(Math.random() * items.length)]
 
-               })
+            setUrl(rand);
+        
+            setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
+            console.log(data)
+    
+            data.map((entry: any) => {
+             console.log(entry.Date_of_entry);
+              setEntries(prevItems => [
+
+                ...prevItems,
+                {
+                  "id": entry.id,
+                  "date": entry.Date_of_entry,
+                  "title": entry.Title,
+                  "story": entry.Entry,
+                  "background": divstyle,
+                }])
+                setImg(false);
+
+            })
+
+
+          })
+          }else{
+            console.log("error")
         }
       })
 
@@ -92,9 +102,8 @@ const Login: React.FC<LoginProps> = ({setImg,imgUrl,setUrl,setStyle,divstyle, se
         <form noValidate onSubmit={login}>
           <IonGrid>
             <DataCards inName={"username"} inType={"text"} ionIcon={personAddOutline} setter={setName}>Username</DataCards>
-
             <DataCards inName={"password"} inType={"password"} ionIcon={keyOutline} setter={setPassword}>Password</DataCards>
-            <IonButton type="submit" >
+            <IonButton type="submit" color="secondary">
               Submit
             </IonButton>
           </IonGrid>

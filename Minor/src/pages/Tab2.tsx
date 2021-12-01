@@ -6,42 +6,32 @@ import {
   IonContent,
   IonItem,
   IonPage,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCardHeader,
-IonAvatar,
-IonButton,
-IonCardSubtitle,
-  IonItemSliding,
-  IonItemOptions,
-  IonItemOption,
 
 } from '@ionic/react';
 import './Tab2.css';
 import EntryCard from "../components/EntryCard";
-import { addCircleOutline, powerOutline } from 'ionicons/icons';
+import { addCircleOutline } from 'ionicons/icons';
 
 type Props = {
   setEntry: Dispatch<React.SetStateAction<boolean>>;
-  entries: Array<{id: any; date: any,title: any,story: any,background: any}>;
+  entries: Array<{ id: any; date: any, title: any, story: any, background: any }>;
   selDate: string;
   setWrite: Dispatch<React.SetStateAction<boolean>>;
   disImg: boolean;
-  setEntries: Dispatch<React.SetStateAction<{ id: any; date: any,title: any,story: any,background: any }[]>>,
+  setEntries: Dispatch<React.SetStateAction<{ id: any; date: any, title: any, story: any, background: any }[]>>,
   setText: Dispatch<React.SetStateAction<string>>,
   setDispTitle: Dispatch<React.SetStateAction<string>>,
   setDispDate: Dispatch<React.SetStateAction<string>>
   username: string;
 
 };
-const Tab2: React.FC<Props> = ({username, setDispDate, setDispTitle, setText, disImg, setWrite, setEntry, entries, selDate, setEntries}) => {
+const Tab2: React.FC<Props> = ({ username, setDispDate, setDispTitle, setText, disImg, setWrite, setEntry, entries, selDate, setEntries }) => {
   const create = () => {
     setEntry(true);
   }
-  const displayEntry = (diaId: number) =>{
-    
-    const selectEntry: any = entries.filter((entry)=>{
+  const displayEntry = (diaId: number) => {
+
+    const selectEntry: any = entries.filter((entry) => {
       return entry.id == diaId;
     });
     selectEntry.map((entry: any) => {
@@ -52,7 +42,7 @@ const Tab2: React.FC<Props> = ({username, setDispDate, setDispTitle, setText, di
     setEntry(true);
     setWrite(false);
 
-    
+
   }
   const removeEntry = (diaId: number) => {
     console.log(diaId)
@@ -67,7 +57,7 @@ const Tab2: React.FC<Props> = ({username, setDispDate, setDispTitle, setText, di
   return (
     <IonPage>
       <IonContent fullscreen>
-    
+
         <IonCard className="addcard" >
           <IonItem className="cardItem" lines="none">
             <IonCardTitle className="title" color="secondary" >Add Entry</IonCardTitle>
@@ -81,11 +71,11 @@ const Tab2: React.FC<Props> = ({username, setDispDate, setDispTitle, setText, di
         }
         {entries.filter(v => Object.keys(v).length).map((entry: any) => {
           //  console.log(entries)
-           return(
-           <EntryCard entryId={entry.id} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry}/>
-           )
-         
-})}
+          return (
+            <EntryCard entryId={entry.id} title={entry.title} selDate={entry.date} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry} entries={entries} />
+          )
+
+        })}
 
       </IonContent>
     </IonPage>

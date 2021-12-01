@@ -27,7 +27,6 @@ import '@ionic/react/css/display.css';
 
 import './theme/variables.css';
 import NewEntry from './pages/NewEntry';
-import Signup from './pages/Signup'
 import Landing from './pages/Landing';
 const App: React.FC = () => {
   const [isEntry, setEntry] = useState<boolean>(false)
@@ -80,16 +79,16 @@ const App: React.FC = () => {
       <IonReactRouter>
         {!isLoggedin ? (<IonRouterOutlet>
           <Route path="/" exact>
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries} ></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername} username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries} ></Landing>
           </Route>
           <Route path="/tab1" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername} username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
           </Route>
           <Route path="/tab2" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername} username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries} ></Landing>
           </Route>
           <Route path="/tab3" exact >
-            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername}  username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
+            <Landing setIsLoggedin={setIsLoggedin} setUsername={setUsername} username={userName} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} entries={entries}></Landing>
           </Route>
         </IonRouterOutlet>)
           :
@@ -106,13 +105,13 @@ const App: React.FC = () => {
                   </Route>
                   <Route path="/tab1" exact>
                     {iswrite ? (
-                      <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName}/>
+                      <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName} />
                     ) :
                       <DisplayEntry setEntry={setEntry} setWrite={setWrite} dispDate={dispDate} dispTitle={dispTitle} dispText={dispText} />
                     }
                   </Route>
                   <Route path="/tab3" exact>
-                    <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName}/>
+                    <NewEntry setEntry={setEntry} selDate={seldate} title={title} setTitle={setTitle} diary={diary} setDiary={setDiary} setEntries={setEntries} setStyle={setStyle} imgUrl={imgUrl} setUrl={setUrl} divstyle={divstyle} setImg={setImg} diaId={diaId} setId={setId} entries={entries} username={userName} />
                   </Route>
                   <Route path="/tab2" exact>
                     {iswrite ? (
@@ -131,11 +130,11 @@ const App: React.FC = () => {
                     </Route>
                     <Route exact path="/tab2">
 
-                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName}/>
+                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName} />
 
                     </Route>
                     <Route path="/tab3">
-                      <Tab3 username={userName}></Tab3>
+                      <Tab3 username={userName} setIsLoggedin={setIsLoggedin}></Tab3>
                     </Route>
                     <Route exact path="/">
                       <Redirect to="/tab1" />

@@ -1,4 +1,12 @@
-import { IonCard, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRow } from "@ionic/react";
+import {
+    IonCard,
+    IonCol,
+    IonIcon,
+    IonInput,
+    IonItem,
+    IonLabel,
+    IonRow
+} from "@ionic/react";
 import React, { Dispatch } from "react"
 import { TextFieldTypes } from "@ionic/core";
 import "./style.css"
@@ -7,9 +15,8 @@ type Details = {
     inType: TextFieldTypes,
     ionIcon: string,
     setter: Dispatch<React.SetStateAction<string>>,
-
-
 }
+
 const DataCards: React.FC<Details> = (props) => {
     return (
         <IonRow>
@@ -21,16 +28,15 @@ const DataCards: React.FC<Details> = (props) => {
                             <IonLabel className="labels">
                                 {props.children}
                             </IonLabel>
-                            </div>
-                            <IonInput
+                        </div>
+                        <IonInput
                             className="inputs"
                             color="secondary"
-                                name={props.inName}
-                                type={props.inType}
-                                onIonChange={(e) => props.setter(e.detail.value!)}
-                                >
-                            </IonInput>
-                        
+                            name={props.inName}
+                            type={props.inType}
+                            onIonChange={(e) => props.setter(e.detail.value!)}>
+                        </IonInput>
+
                     </IonItem>
                 </IonCard>
             </IonCol>

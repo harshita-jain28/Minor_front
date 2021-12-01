@@ -29,6 +29,7 @@ const Tab1: React.FC<CalProps> = ({ entries, setSelDate, selDate, setWrite,setEn
     console.log("hi")
   }
   function onchange( args: ChangedEventArgs): void { 
+    console.log(entries)
     var tmp = args!.value!.toLocaleDateString();
     setCurrDate(tmp);
   // (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args!.value!.toLocaleDateString(); 
@@ -46,7 +47,7 @@ const Tab1: React.FC<CalProps> = ({ entries, setSelDate, selDate, setWrite,setEn
         {entries.filter((e) => { return e.date == currDate}).map((entry: any) =>{
           console.log(entry)
           return(
-            <EntryCard entryId={entry.id} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry}/>
+            <EntryCard entryId={entry.id} title={entry.title} selDate={selDate} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry} entries={entries}/>
           )
         })}
         

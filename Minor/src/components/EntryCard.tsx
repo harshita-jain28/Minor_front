@@ -12,7 +12,7 @@ import {
     IonItem
 } from '@ionic/react';
 import "./EntryCard.css"
-import { addCircleOutline, trashOutline,createOutline} from 'ionicons/icons';
+import { trashOutline,createOutline} from 'ionicons/icons';
 
 type CardProps = {
     title: string;
@@ -23,9 +23,10 @@ type CardProps = {
     removeEntry: Function,
     entryId: number,
     displayEntry: Function,
+    entries: Array<{ id: any; date: any, title: any, story: any, background: any }>;
 
 };
-const EntryCard: React.FC<CardProps> = ({displayEntry, removeEntry,entryId,setEntry, setWrite, divStyle, title, selDate }) => {
+const EntryCard: React.FC<CardProps> = ({entries,displayEntry, removeEntry,entryId,setEntry, setWrite, divStyle, title, selDate }) => {
     const readEntry = () => {
         setEntry(true);
         setWrite(false);

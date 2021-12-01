@@ -52,6 +52,9 @@ const Landing: React.FC<LandProps> = ({entries,setEntries, setImg,setStyle,imgUr
   return (
     <IonPage>
       <IonHeader>
+      <img src="https://i.postimg.cc/43wxwXLc/acd6d9.png"></img>
+      </IonHeader>
+      <IonHeader>
         <IonToolbar>
           <IonSegment value={value} onIonChange={(e) => handleSegmentChange(e)}>
             <IonSegmentButton value="0">
