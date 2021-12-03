@@ -22,9 +22,11 @@ type LoginProps = {
 };
 
 const Login: React.FC<LoginProps> = ({ setImg, imgUrl, setUrl, setStyle, divstyle, setEntries, entries, setIsLoggedin, setName, username }) => {
+  const [msg,setmsg] = useState("")
+
   var items = ['https://i.postimg.cc/HnXn9z7y/Untitled-design-2.png', 'https://i.postimg.cc/zvk4bJm6/bg3.png', 'https://i.postimg.cc/hjZSJb9V/bg4.png']
   const [password, setPassword] = useState("");
-  
+  const [tok,setTok] = useState("")
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -42,58 +44,62 @@ const Login: React.FC<LoginProps> = ({ setImg, imgUrl, setUrl, setStyle, divstyl
       .then((res) => {
         if (res.status == 200) {
           res.json().then((json) => {
-
+            setTok(json.access);
             console.log(json);
             localStorage.setItem("token", json.access);
             setName(username)
             setIsLoggedin(true)
+          
             console.log(username)
           })
         } else {
+          res.json().then((json) => {
+            console.log(json);
+          })
           console.log("error")
         }
       });
 
    
 
-    fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-All-notes/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
-      body: JSON.stringify({ username: username }),
-    })
-      .then((res) => {
-        if (res.status == 200) {
-          console.log("added");
-          res.json().then((data) => {
-            var rand = items[Math.floor(Math.random() * items.length)]
+    // fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-All-notes/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json", Authorization: `Bearer ${tok}` },
+    //   body: JSON.stringify({ username: username }),
+    // })
+    //   .then((res) => {
+    //     if (res.status == 200) {
+    //       console.log("added");
+    //       res.json().then((data) => {
+    //         var rand = items[Math.floor(Math.random() * items.length)]
 
-            setUrl(rand);
+    //         setUrl(rand);
         
-            setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
-            console.log(data)
+    //         setStyle({ "backgroundImage": 'url(' + imgUrl + ')' })
+    //         console.log(data)
     
-            data.map((entry: any) => {
-             console.log(entry.Date_of_entry);
-              setEntries(prevItems => [
+    //         data.map((entry: any) => {
+    //          console.log(entry.Date_of_entry);
+    //           setEntries(prevItems => [
 
-                ...prevItems,
-                {
-                  "id": entry.id,
-                  "date": entry.Date_of_entry,
-                  "title": entry.Title,
-                  "story": entry.Entry,
-                  "background": divstyle,
-                }])
-                setImg(false);
+    //             ...prevItems,
+    //             {
+    //               "id": entry.id,
+    //               "date": entry.Date_of_entry,
+    //               "title": entry.Title,
+    //               "story": entry.Entry,
+    //               "background": divstyle,
+    //             }])
+    //             setImg(false);
 
-            })
+    //         })
 
 
-          })
-          }else{
-            console.log("error")
-        }
-      })
+    //       })
+    //       }else{
+    //         console.log("error")
+    //     }
+    //   })
 
   }
   return (

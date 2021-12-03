@@ -134,7 +134,7 @@ const App: React.FC = () => {
                     </Route>
                     <Route exact path="/tab2">
 
-                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName} />
+                      <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName} imgUrl={imgUrl} setStyle={setStyle} divstyle={divstyle} setUrl={setUrl} setImg={setImg} />
 
                     </Route>
                     <Route path="/tab3">

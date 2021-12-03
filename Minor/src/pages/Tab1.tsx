@@ -1,4 +1,4 @@
-import { useState, Dispatch } from 'react';
+import { useState,useEffect, Dispatch } from 'react';
 import {
   IonContent,
   IonPage,
@@ -34,8 +34,7 @@ type CalProps = {
 };
 const Tab1: React.FC<CalProps> = ({ setShow, show, ids, setEntries2, divstyle, entries2, username, entries, setSelDate, selDate, setWrite, setEntry, removeEntry, displayEntry }) => {
   const [isShow, setIsShow] = useState<boolean>(true);
-
-
+  
   const [currDate, setCurrDate] = useState(new Date().toLocaleDateString() + "")
   const display = () => {
     setIsShow(!isShow)
@@ -65,11 +64,12 @@ const Tab1: React.FC<CalProps> = ({ setShow, show, ids, setEntries2, divstyle, e
       .then((res) => {
         if (res.status == 200) {
 
-          
           res.json().then((data) => {
+            setEntries2([])
+            console.log("Log1")
             console.log(data)
             data.map((entry: any) => {
-              if (!(entries2.filter(e => e.id == entry.id).length > 0)) {
+              // if (!(entries2.filter(e => e.id == entry.id).length > 0)) {
                 setEntries2(prevItems => [
                   ...prevItems,
                   {
@@ -80,11 +80,12 @@ const Tab1: React.FC<CalProps> = ({ setShow, show, ids, setEntries2, divstyle, e
                     "background": divstyle,
                   }])
 
-              }
-              console.log(entries2)
-              console.log("log2")
+              // }
+              // console.log(entries2)
             })
+            console.log("Log2")
 
+            console.log(entries2)
           })
 
 
@@ -103,8 +104,8 @@ const Tab1: React.FC<CalProps> = ({ setShow, show, ids, setEntries2, divstyle, e
 
         </div>
 
-        {entries2.filter((e) => { return e.date == currDate }).map((entry: any) => {
-            console.log(entry)
+        {entries2.map((entry: any) => {
+            // console.log(entry)
 
           return (
             <div key={entry.id}>
