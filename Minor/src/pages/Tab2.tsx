@@ -69,10 +69,13 @@ const Tab2: React.FC<Props> = ({ username, setDispDate, setDispTitle, setText, d
             <img className="disp-img" src="https://i.postimg.cc/0y3wP15K/WELCOME-TO-EMODAR-1.png"></img>
           </div>
         }
+        
         {entries.filter(v => Object.keys(v).length).map((entry: any) => {
           //  console.log(entries)
           return (
+            <div key={entry.id}>
             <EntryCard entryId={entry.id} title={entry.title} selDate={entry.date} divStyle={entry.background} setWrite={setWrite} setEntry={setEntry} removeEntry={removeEntry} displayEntry={displayEntry} entries={entries} />
+            </div>
           )
 
         })}

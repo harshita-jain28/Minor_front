@@ -56,7 +56,7 @@ const Landing: React.FC<LandProps> = ({entries,setEntries, setImg,setStyle,imgUr
       </IonHeader>
       <IonHeader>
         <IonToolbar>
-          <IonSegment value={value} onIonChange={(e) => handleSegmentChange(e)}>
+          <IonSegment value={value} onIonChange={(e) => handleSegmentChange(e)} color="secondary">
             <IonSegmentButton value="0">
               <IonTitle className="titl">Login</IonTitle>
             </IonSegmentButton>

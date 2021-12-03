@@ -104,7 +104,7 @@ const Login: React.FC<LoginProps> = ({ setImg, imgUrl, setUrl, setStyle, divstyl
             <DataCards inName={"username"} inType={"text"} ionIcon={personAddOutline} setter={setName}>Username</DataCards>
             <DataCards inName={"password"} inType={"password"} ionIcon={keyOutline} setter={setPassword}>Password</DataCards>
             <IonButton type="submit" color="secondary">
-              Submit
+              Login
             </IonButton>
           </IonGrid>
         </form>

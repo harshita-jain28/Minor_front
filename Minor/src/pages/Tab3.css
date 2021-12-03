@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
+
 .top-card{
     box-shadow: none !important;
     padding:0;
@@ -20,4 +22,37 @@
     padding:0;
     margin:0;
     font-size: 20px;
+
+}
+
+.recom-card{
+    background: no-repeat url("https://i.postimg.cc/nhYyQKsZ/acd6d9-4.png") 100% 100% !important ;
+    height:200px;
+border-radius: 25px;
+margin:15px; 
+}
+
+.medi{
+    margin-left: 36%;
+
+    font-family: 'Merriweather', serif;
+}
+
+.card-text{
+    font-family: 'Merriweather', serif;
+
+    color: #669ca0;
+    font-size: 15px;
+}
+
+.text-div{
+    word-wrap: break-word;
+    margin-left: 40%;
+    margin-right: 3%;
+}
+
+.butt{
+    font-size: 12px;
+    margin-left: 44%;
+
 }

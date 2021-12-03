@@ -35,3 +35,20 @@
     padding-right:10%;
 
 }
+
+.medi-page{
+    --ion-background-color: #d1dfe0 !important ;
+}
+
+.back-btn{
+    padding-left:5%;
+    padding-top: 2%;
+}
+
+.medi-head{
+    font-size: 25px;
+    text-decoration: overline;
+    margin-left:2%;
+    font-family: 'Merriweather', serif;
+
+}

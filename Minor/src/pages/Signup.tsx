@@ -78,7 +78,7 @@ const Signup: React.FC<Props> = ({ setIsLoggedin, setName }) => {
             <DataCards inName={"email"} inType={"email"} ionIcon={mailOutline} setter={setMail}>E-mail</DataCards>
             <DataCards inName={"username"} inType={"text"} ionIcon={personAddOutline} setter={setUsername}>Username</DataCards>
             <IonButton type="submit" color="secondary">
-              Submit
+              Signup
             </IonButton>
           </IonGrid>
         </form>

@@ -28,10 +28,12 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import NewEntry from './pages/NewEntry';
 import Landing from './pages/Landing';
+import Medidate from './pages/Medidate';
 const App: React.FC = () => {
   const [isEntry, setEntry] = useState<boolean>(false)
   const [seldate, setSelDate] = useState(new Date().toLocaleDateString() + "");
   const [entries, setEntries] = useState<{ id: any; date: any, title: any, story: any, background: any }[]>([])
+  const [entries2, setEntries2] = useState<{ id: any; date: any, title: any, story: any, background: any }[]>([])
   const [title, setTitle] = useState("");
   const [diary, setDiary] = useState("");
   const [divstyle, setStyle] = useState({ "backgroundImage": "url(https://i.postimg.cc/hjZSJb9V/bg4.png)" });
@@ -42,7 +44,9 @@ const App: React.FC = () => {
   const [dispDate, setDispDate] = useState("")
   const [dispTitle, setDispTitle] = useState("")
   const [dispText, setText] = useState("")
-
+  const ids: any[] = [];
+  const [show, setShow] = useState<boolean>(true);
+  const [ismedidate,setMedidate] = useState<boolean>(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userName, setUsername] = useState<string>("Ramu");
 
@@ -126,7 +130,7 @@ const App: React.FC = () => {
                 <IonTabs >
                   <IonRouterOutlet>
                     <Route exact path="/tab1">
-                      <Tab1 setSelDate={setSelDate} entries={entries} setEntry={setEntry} selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} />
+                      <Tab1 show={show} setShow={setShow} setSelDate={setSelDate} entries={entries} ids={ids} setEntry={setEntry} selDate={seldate} setWrite={setWrite} removeEntry={removeEntry} entries2={entries2} displayEntry={displayEntry} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName} setEntries2={setEntries2} divstyle={divstyle} />
                     </Route>
                     <Route exact path="/tab2">
 
@@ -134,7 +138,14 @@ const App: React.FC = () => {
 
                     </Route>
                     <Route path="/tab3">
-                      <Tab3 username={userName} setIsLoggedin={setIsLoggedin}></Tab3>
+                      { !ismedidate ? (
+                        <Tab3 username={userName} setIsLoggedin={setIsLoggedin} setMedidate={setMedidate}></Tab3>
+                      )
+                        :
+                        (
+                          <Medidate setMedidate={setMedidate}></Medidate>
+                        )
+}
                     </Route>
                     <Route exact path="/">
                       <Redirect to="/tab1" />

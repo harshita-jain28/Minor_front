@@ -11,8 +11,10 @@ import {
   IonCard,
   IonIcon,
   IonCardSubtitle,
+  IonText,
+  IonButton,
 } from '@ionic/react';
-import { logOut, powerOutline } from 'ionicons/icons';
+import { playCircle, powerOutline } from 'ionicons/icons';
 
 import './Tab3.css';
 import Graph from "../components/Graph"
@@ -20,13 +22,17 @@ import MonthGraph from '../components/MonthGraph';
 type TabProps = {
   username: string;
   setIsLoggedin: Dispatch<React.SetStateAction<boolean>>;
+  setMedidate: Dispatch<React.SetStateAction<boolean>>;
 
 
 };
-const Tab3: React.FC<TabProps> = ({ username, setIsLoggedin }) => {
+const Tab3: React.FC<TabProps> = ({setMedidate, username, setIsLoggedin }) => {
   const logout = () =>{
     setIsLoggedin(false);
     localStorage.removeItem("token")
+  }
+  const medidate_display = () => {
+    setMedidate(true)
   }
   return (
     <IonPage>
@@ -52,6 +58,17 @@ const Tab3: React.FC<TabProps> = ({ username, setIsLoggedin }) => {
 
         <Graph ></Graph>
         <MonthGraph ></MonthGraph>
+        <div>
+        <IonTitle className="ion-padding ion-text-center dash" color="secondary">Recommendations</IonTitle>
+
+          <IonCard className="recom-card">
+            <IonCardTitle className="ion-padding  medi" color="secondary">Medidation 101</IonCardTitle>
+            <div className="text-div">
+            <IonText className="card-text ion-text-right" color="light">Techniques, Benefits and a Beginner's How To</IonText>
+            </div>
+            <IonButton className="butt ion-padding" color="secondary" onClick={() => medidate_display()}>Learn more</IonButton>
+          </IonCard>
+        </div>
       </IonContent>
     </IonPage>
   );
