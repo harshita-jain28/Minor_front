@@ -85,10 +85,11 @@ const Tab2: React.FC<Props> = ({imgUrl,setStyle, setUrl,divstyle,setImg,username
     setEntry(true);
   }
   const displayEntry = (diaId: number) => {
-
+    
     const selectEntry: any = entries.filter((entry) => {
       return entry.id == diaId;
     });
+  
     selectEntry.map((entry: any) => {
       setDispDate(entry.date)
       setText(entry.story)

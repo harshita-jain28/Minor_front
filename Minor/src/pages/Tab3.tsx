@@ -34,6 +34,33 @@ const Tab3: React.FC<TabProps> = ({setMedidate, username, setIsLoggedin }) => {
   const medidate_display = () => {
     setMedidate(true)
   }
+
+  const metrics = () =>{
+    console.log("hello")
+    console.log(username)
+    fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-Metrics/", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}`, 'Accept': 'application/json'
+    },
+      body: JSON.stringify({username: username}),
+    })
+      .then((res) => {
+        if (res.status == 200) {
+          res.json().then((json) => {
+           
+            console.log(json);
+          
+          })
+        } else {
+          res.json().then((json) => {
+            console.log(json);
+          })
+          console.log("error")
+        }
+      });
+  }
+  
   return (
     <IonPage>
 
@@ -54,7 +81,7 @@ const Tab3: React.FC<TabProps> = ({setMedidate, username, setIsLoggedin }) => {
             </IonRow>
           </IonGrid>
         </IonCard>
-        <IonTitle className="ion-padding ion-text-center dash" color="secondary">Dashboard</IonTitle>
+        <IonTitle className="ion-padding ion-text-center dash" color="secondary" onClick={() => metrics()}>Dashboard</IonTitle>
 
         <Graph ></Graph>
         <MonthGraph ></MonthGraph>

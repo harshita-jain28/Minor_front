@@ -17,9 +17,9 @@ const MonthGraph: React.FC = () => {
     { x: "2021/10/11", y: 'Sadness' },
     { x: "2021/10/22", y: 'Anger' },
     { x: "2021/10/20", y: 'Joy' },
-    { x: "2021/10/21", y: 'Love' },
-    { x: "2021/10/22", y: 'Fear' },
-    { x: "2021/11/23", y: 'Surprise' },
+    { x: "2021/11/21", y: 'Love' },
+    { x: "2021/11/22", y: 'Fear' },
+    { x: "2021/12/23", y: 'Surprise' },
 
   ];
   const dateFormatter = (date: any) => {

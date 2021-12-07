@@ -48,7 +48,7 @@ const App: React.FC = () => {
   const [show, setShow] = useState<boolean>(true);
   const [ismedidate,setMedidate] = useState<boolean>(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
-  const [userName, setUsername] = useState<string>("Ramu");
+  const [userName, setUsername] = useState<string>("Mukesh");
 
 
   const removeEntry = (diaId: number) => {
@@ -74,8 +74,6 @@ const App: React.FC = () => {
     })
     setEntry(true);
     setWrite(false);
-
-
   }
 
   return (
@@ -137,7 +135,7 @@ const App: React.FC = () => {
                       <Tab2 setEntry={setEntry} entries={entries} selDate={seldate} setWrite={setWrite} disImg={disImg} setEntries={setEntries} setDispDate={setDispDate} setDispTitle={setDispTitle} setText={setText} username={userName} imgUrl={imgUrl} setStyle={setStyle} divstyle={divstyle} setUrl={setUrl} setImg={setImg} />
 
                     </Route>
-                    <Route path="/tab3">
+                    <Route path="/tab3" >
                       { !ismedidate ? (
                         <Tab3 username={userName} setIsLoggedin={setIsLoggedin} setMedidate={setMedidate}></Tab3>
                       )
