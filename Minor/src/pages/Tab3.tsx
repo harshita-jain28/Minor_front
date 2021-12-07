@@ -59,6 +59,28 @@ const Tab3: React.FC<TabProps> = ({setMedidate, username, setIsLoggedin }) => {
           console.log("error")
         }
       });
+
+      fetch(process.env.REACT_APP_BACKEND_API_URL + "Get-recommendation/", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}`, 'Accept': 'application/json'
+      },
+        body: JSON.stringify({username: username}),
+      })
+        .then((res) => {
+          if (res.status == 200) {
+            res.json().then((json) => {
+             
+              console.log(json);
+            
+            })
+          } else {
+            res.json().then((json) => {
+              console.log(json);
+            })
+            console.log("error")
+          }
+        });
   }
   
   return (
